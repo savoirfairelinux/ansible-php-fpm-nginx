@@ -1,0 +1,13 @@
+---
+# A slug uniquely identifying the php project name
+# Used pretty much everywhere. Defines the name of the ningx conf.
+php_base_name: my_php_project
+# The user that will own all WP-related files
+php_user: "{{ php_base_name }}"
+# Domain name for the website
+php_domain_name: "{{ php_base_name }}.local"
+php_url: "http://{{ php_domain_name }}"
+# PHP site root. Where we tell php-fpm to look for its website
+php_site_root: ""
+# File we look for when we need this index of the website
+php_index_filename: "index.php"

@@ -1,0 +1,12 @@
+---
+- name: Ensure packages needed for nginx+php-fpm are present
+  apt: name={{ item }} state=latest
+  with_items:
+    - ssl-cert # for the snakeoil cert
+    - nginx-full
+    - php5-fpm
+- name: Ensure that php_user exists
+  user:
+    name: "{{ php_user }}"
+    createhome: no
+    shell: /bin/bash
