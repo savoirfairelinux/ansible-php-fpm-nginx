@@ -1,7 +1,7 @@
 - name: Ensure packages needed for nginx+php-fpm are present
   apt: name={{ item }} state=present
-  with_items:
-    - php5-fpm
+  with_items: "{{ php_required_system_packages|mandatory }}"
+
 - name: Ensure that php_user exists
   user:
     name: "{{ php_user }}"
