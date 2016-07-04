@@ -9,6 +9,7 @@ See [default variables](defaults/main.yml) for details.
 * Ansible 2.0+
 * One of these target systems:
     * Debian jessie
+    * Ubuntu 14.04
     * Ubuntu 16.04
 * Nginx installed. Recommended role: [ansible-nginx][ansible-nginx]
 
