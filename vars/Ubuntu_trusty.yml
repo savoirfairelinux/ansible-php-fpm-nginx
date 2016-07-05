@@ -2,3 +2,5 @@ php_required_system_packages:
   - php5-fpm
 
 php_fpm_socket_path: /var/run/php5-fpm.sock
+
+php_fastcgi_nginx_include: include fastcgi_params;
