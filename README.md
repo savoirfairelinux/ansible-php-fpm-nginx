@@ -23,4 +23,10 @@ See [default variables](defaults/main.yml) for details.
   php_index_filename: index.php
 ```
 
+## Uninstall
+
+This role supports uninstalling cleanly. If you run the role with `php_uninstall` to `yes`,
+resources created by the role will be removed. This however, excludes system packages because we
+want to avoid removing packages that another role might need.
+
 [ansible-nginx]: https://github.com/savoirfairelinux/ansible-nginx

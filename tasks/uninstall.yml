@@ -1,0 +1,8 @@
+- debug:
+    msg: "Uninstalling the role php-fpm-nginx {{ php_base_name }}"
+
+- name: Remove nginx config
+  file:
+    path: "/etc/nginx/sites-enabled/{{ php_base_name }}.conf"
+    state: absent
+  notify: nginx restart

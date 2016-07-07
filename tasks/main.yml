@@ -1,3 +1,10 @@
 - include_vars: "{{ ansible_distribution }}_{{ ansible_distribution_release }}.yml"
-- include: system.yml
-- include: nginx.yml
+
+- include: uninstall.yml
+  when: php_uninstall
+
+- block:
+  - include: system.yml
+  - include: nginx.yml
+
+  when: not php_uninstall
