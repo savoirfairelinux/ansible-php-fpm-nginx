@@ -1,3 +1,11 @@
+- name: Check if SSL config is there
+  stat: path="/etc/nginx/snippets/{{ php_domain_name }}.ssl.conf"
+  register: ssl_config_file
+
+- name: Check if acme_well_known config is there
+  stat: path="/etc/nginx/snippets/acme_well_known.conf"
+  register: acme_well_known_config_file
+
 - name: Create config for wordpress site
   template: "src=nginx.conf dest=/etc/nginx/sites-enabled/{{ php_base_name }}.conf"
   notify: nginx restart
