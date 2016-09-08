@@ -22,3 +22,6 @@ php_index_filename: "index.php"
 # If set, we will disallow robots by including the "disallow_robots" snippet provided by the
 # nginx role.
 php_disallow_robots: no
+
+# If set, our nginx config will only answer to HTTPS requests, ignoring requests on port 80.
+php_ssl_only: no
