@@ -28,3 +28,6 @@ php_ssl_only: no
 
 # If set, our nginx config will state that it supports http2. Can be enabled on any Ubuntu >= 16.04 and when nginx version is >= 1.9.5
 nginx_support_http2: no
+
+# All URLs from which we want to add redirections
+php_redirections: []
