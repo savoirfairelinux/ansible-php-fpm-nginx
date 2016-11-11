@@ -6,3 +6,17 @@
     path: "/etc/nginx/sites-enabled/{{ php_base_name }}.conf"
     state: absent
   notify: nginx restart
+
+- block:
+  - name: find {{ php_base_name }} nginx snippets
+    find:
+      paths: "/etc/nginx/snippets/"
+      patterns: "php-fpm-{{ php_base_name }}.*.conf"
+    register: result
+  - name: Remove nginx snippets
+    file:
+      path: "{{ item.path }}"
+      state: absent
+    with_items: "{{ result.files }}"
+    notify: nginx restart
+  when: php_uninstall_snippets
