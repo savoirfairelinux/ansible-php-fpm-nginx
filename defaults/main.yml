@@ -2,6 +2,10 @@
 # packages, however.
 php_uninstall: no
 
+# If set, and when php_uninstall is set, running the role will remove all snippets included in
+# the nginx conf file, even if created by another role
+php_uninstall_snippets: no
+
 # A slug uniquely identifying the php project name
 # Used pretty much everywhere. Defines the name of the ningx conf.
 php_base_name: my_php_project
@@ -26,7 +30,8 @@ php_disallow_robots: no
 # If set, our nginx config will only answer to HTTPS requests, ignoring requests on port 80.
 php_ssl_only: no
 
-# If set, our nginx config will state that it supports http2. Can be enabled on any Ubuntu >= 16.04 and when nginx version is >= 1.9.5
+# If set, our nginx config will state that it supports http2.
+# Can be enabled on any Ubuntu >= 16.04 and when nginx version is >= 1.9.5
 nginx_support_http2: no
 
 # All URLs from which we want to add redirections
