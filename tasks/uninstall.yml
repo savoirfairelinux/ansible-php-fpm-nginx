@@ -17,6 +17,7 @@
     file:
       path: "{{ item.path }}"
       state: absent
-    with_items: "{{ result.files }}"
+    # default([]) is to avoid a warning when the previous task is skipped
+    with_items: "{{ result.files|default([]) }}"
     notify: nginx restart
   when: php_uninstall_snippets
