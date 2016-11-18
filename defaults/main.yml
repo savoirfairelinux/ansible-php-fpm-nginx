@@ -36,3 +36,6 @@ nginx_support_http2: no
 
 # All URLs from which we want to add redirections
 php_redirections: []
+
+# include defaut server block
+include_default_location_block: yes
