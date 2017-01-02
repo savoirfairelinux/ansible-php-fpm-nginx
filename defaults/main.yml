@@ -39,3 +39,6 @@ php_redirections: []
 
 # include defaut server block
 include_default_location_block: yes
+
+# If defined and set, the referer_hash_bucket_size will be set. Defaults to 64 in nginx.
+#php_referer_hash_bucket_size: 64
