@@ -1,0 +1,8 @@
+---
+
+- name: Generate PHP-FPM pool configuration
+  template:
+    src: fpm-pool.conf
+    dest: "{{ php_fpm_pool_conf_path }}/{{ php_pool_name }}.conf"
+  notify:
+    - fpm restart

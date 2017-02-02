@@ -7,6 +7,13 @@
     state: absent
   notify: nginx restart
 
+- name: Remove FPM pool
+  file:
+    path: "{{ php_fpm_pool_conf_path }}/{{ php_pool_name }}.conf"
+    state: absent
+  when: php_create_pool
+  notify: fpm restart
+
 - block:
   - name: find {{ php_base_name }} nginx snippets
     find:

@@ -1,4 +1,9 @@
 ---
+- name: fpm restart
+  service:
+    name: "{{ php_fpm_service_name }}"
+    state: restarted
+
 - name: nginx restart
   service: name=nginx state=restarted
 
