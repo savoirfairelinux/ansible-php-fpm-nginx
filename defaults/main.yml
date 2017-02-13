@@ -42,3 +42,24 @@ include_default_location_block: yes
 
 # If defined and set, the referer_hash_bucket_size will be set. Defaults to 64 in nginx.
 #php_referer_hash_bucket_size: 64
+
+# *** POOL-RELATED VARIABLES ***
+#
+# By default, our PHP site is served by the general OS-supplied "www" pool. However, if you want
+# better isolation and or if you want to run your process as a user other than "www-data", you need
+# to set up a php-fpm pool. Use these variables below to do so.
+#
+# Setup inspired by:
+# https://www.digitalocean.com/community/tutorials/how-to-host-multiple-websites-securely-with-nginx-and-php-fpm-on-ubuntu-14-04
+
+# Enables the pool generation machanism
+php_create_pool: no
+
+# Name of the pool config file
+php_pool_name: "{{ php_base_name }}"
+
+# Group to run the pool under
+php_pool_group: www-data
+
+# Where our pool-specific socker will live
+php_pool_socket_path: "/var/run/php-fpm-{{ php_pool_name }}.sock"

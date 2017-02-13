@@ -6,7 +6,7 @@ See [default variables](defaults/main.yml) for details.
 
 ## Requirements
 
-* Ansible 2.0+
+* Ansible 2.2+
 * One of these target systems:
     * Debian jessie
     * Ubuntu 14.04
