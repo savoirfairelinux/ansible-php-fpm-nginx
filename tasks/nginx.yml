@@ -6,7 +6,6 @@
   stat: path="/etc/nginx/snippets/acme_well_known.conf"
   register: acme_well_known_config_file
 
-- name: Create config for wordpress site
+- name: Create config for site
   template: "src=nginx.conf dest=/etc/nginx/sites-enabled/{{ php_base_name }}.conf"
   notify: nginx restart
-

@@ -2,6 +2,10 @@
 # packages, however.
 php_uninstall: no
 
+# If set, and when php_uninstall is set, running the role will remove all snippets included in
+# the nginx conf file, even if created by another role
+php_uninstall_snippets: no
+
 # A slug uniquely identifying the php project name
 # Used pretty much everywhere. Defines the name of the ningx conf.
 php_base_name: my_php_project
@@ -26,11 +30,39 @@ php_disallow_robots: no
 # If set, our nginx config will only answer to HTTPS requests, ignoring requests on port 80.
 php_ssl_only: no
 
-# If set, our nginx config will state that it supports http2. Can be enabled on any Ubuntu >= 16.04 and when nginx version is >= 1.9.5
+# If set, our nginx config will state that it supports http2.
+# Can be enabled on any Ubuntu >= 16.04 and when nginx version is >= 1.9.5
 nginx_support_http2: no
 
 # All URLs from which we want to add redirections
 php_redirections: []
+
+# include defaut server block
+include_default_location_block: yes
+
+# If defined and set, the referer_hash_bucket_size will be set. Defaults to 64 in nginx.
+#php_referer_hash_bucket_size: 64
+
+# *** POOL-RELATED VARIABLES ***
+#
+# By default, our PHP site is served by the general OS-supplied "www" pool. However, if you want
+# better isolation and or if you want to run your process as a user other than "www-data", you need
+# to set up a php-fpm pool. Use these variables below to do so.
+#
+# Setup inspired by:
+# https://www.digitalocean.com/community/tutorials/how-to-host-multiple-websites-securely-with-nginx-and-php-fpm-on-ubuntu-14-04
+
+# Enables the pool generation machanism
+php_create_pool: no
+
+# Name of the pool config file
+php_pool_name: "{{ php_base_name }}"
+
+# Group to run the pool under
+php_pool_group: www-data
+
+# Where our pool-specific socker will live
+php_pool_socket_path: "/var/run/php-fpm-{{ php_pool_name }}.sock"
 
 # additionnal fastcgi params.
 # example: 'PHP_VALUE "upload_max_filesize=3M \n post_max_size=3M"'

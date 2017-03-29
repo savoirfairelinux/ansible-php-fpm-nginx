@@ -5,6 +5,10 @@
 
 - block:
   - include: system.yml
+
+  - include: pool.yml
+    when: php_create_pool
+
   - include: nginx.yml
 
   when: not php_uninstall
