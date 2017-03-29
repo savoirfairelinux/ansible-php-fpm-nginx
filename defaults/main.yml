@@ -31,3 +31,7 @@ nginx_support_http2: no
 
 # All URLs from which we want to add redirections
 php_redirections: []
+
+# additionnal fastcgi params.
+# example: 'PHP_VALUE "upload_max_filesize=3M \n post_max_size=3M"'
+php_fastcgi_param: []
