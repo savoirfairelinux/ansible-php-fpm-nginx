@@ -63,3 +63,7 @@ php_pool_group: www-data
 
 # Where our pool-specific socker will live
 php_pool_socket_path: "/var/run/php-fpm-{{ php_pool_name }}.sock"
+
+# additionnal fastcgi params.
+# example: 'PHP_VALUE "upload_max_filesize=3M \n post_max_size=3M"'
+php_fastcgi_param: []
