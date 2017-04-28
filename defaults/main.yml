@@ -67,3 +67,13 @@ php_pool_socket_path: "/var/run/php-fpm-{{ php_pool_name }}.sock"
 # additionnal fastcgi params.
 # example: 'PHP_VALUE "upload_max_filesize=3M \n post_max_size=3M"'
 php_fastcgi_param: []
+
+# Enable HTTP basic auth
+php_http_basic_auth_enabled: false
+php_http_basic_auth_message: 'Authorization required'
+php_http_basic_auth_htpasswd_path: ''
+php_http_basic_auth_accounts: []
+# - username: bob
+#   password: whatever42
+# - username: alice
+#   password: rocknroll42
