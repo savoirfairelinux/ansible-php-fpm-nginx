@@ -6,6 +6,17 @@
   stat: path="/etc/nginx/snippets/acme_well_known.conf"
   register: acme_well_known_config_file
 
+- name: Ensure htpasswd file present for HTTP basic auth
+  htpasswd:
+    path: "{{ php_http_basic_auth_htpasswd_path }}"
+    name: "{{ item.username }}"
+    password: "{{ item.password }}"
+    owner: root
+    group: www-data
+    mode: 0640
+  with_items: "{{ php_http_basic_auth_accounts }}"
+  when: php_http_basic_auth_enabled
+
 - name: Create config for site
   template: "src=nginx.conf dest=/etc/nginx/sites-enabled/{{ php_base_name }}.conf"
   notify: nginx restart
