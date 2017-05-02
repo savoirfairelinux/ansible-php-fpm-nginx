@@ -29,4 +29,13 @@ This role supports uninstalling cleanly. If you run the role with `php_uninstall
 resources created by the role will be removed. This however, excludes system packages because we
 want to avoid removing packages that another role might need.
 
+## FastCGI Cache
+
+You can enable FastCGI Cache by setting `php_fastcgi_cache_enabled` to `true`.
+If you want to clear the cache, you need to call from the same machine this
+corresponding URL : `http://[[php_base_name]].purge.cache.fastcgi.nginx.local/`
+
+More information about caching features can be found in `defaults/main.yml`.
+
+
 [ansible-nginx]: https://github.com/savoirfairelinux/ansible-nginx

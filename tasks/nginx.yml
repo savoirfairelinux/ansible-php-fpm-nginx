@@ -20,3 +20,24 @@
 - name: Create config for site
   template: "src=nginx.conf dest=/etc/nginx/sites-enabled/{{ php_base_name }}.conf"
   notify: nginx restart
+
+# Older versions of nginx shipped with package manager does not support
+# fastcgi_cache_purge, and fastcgi refuses to give rights over cache files to
+# particular users, and LXDock sets nosuid so we required to workaround this
+# by creating a simple script owned by www-data that delete the cache by itself.
+# For this version, the whole cache will be cleared because it do the
+# job for what we need. May be required to upgrade this method in the future.
+- name: Ensure a script that www-data can execute to clear FastCGI Cache
+  template:
+    src: cache-clear-script.conf
+    dest: "{{ php_fastcgi_cache_purge_script_path }}"
+    mode: 0050
+    owner: root
+    group: www-data
+  when: php_fastcgi_cache_enabled
+
+- name: Ensure that the FastCGI Cache clear URL is reachable
+  lineinfile:
+    path: /etc/hosts
+    line: "127.0.0.1 {{ php_base_name }}.purge.cache.fastcgi.nginx.local"
+  when: php_fastcgi_cache_enabled
