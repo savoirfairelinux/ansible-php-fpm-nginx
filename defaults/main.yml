@@ -77,3 +77,24 @@ php_http_basic_auth_accounts: []
 #   password: whatever42
 # - username: alice
 #   password: rocknroll42
+
+# Enable FastCGI cache
+php_fastcgi_cache_enabled: false
+
+# set fastcgi cache storage path
+php_fastcgi_cache_storage_path: "/dev/shm/nginx_fastcgi_cache_{{ php_base_name }}"
+
+# maximum size of cache in Mb
+php_fastcgi_cache_max_size_mb: 256
+
+# minutes before cached page expiration
+php_fastcgi_cache_expiration_minutes: 10080
+
+# the request uris regexes to not cache
+php_fastcgi_cache_ignored_uri_regex_matches: []
+
+# if you want to not cache post requests
+php_fastcgi_cache_ignore_post_requests: true
+
+# where you want to save the cache clear script
+php_fastcgi_cache_purge_script_path: ""
