@@ -98,3 +98,9 @@ php_fastcgi_cache_ignore_post_requests: true
 
 # where you want to save the cache clear script
 php_fastcgi_cache_purge_script_path: ""
+
+# if nginx requests per second limit must be enabled (outer static assets)
+php_limitreq_enabled: false
+
+# the maximum requests per second per client IP address to throw HTTP error
+php_limitreq_per_second: 15
