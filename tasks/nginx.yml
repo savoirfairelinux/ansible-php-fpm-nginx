@@ -2,6 +2,10 @@
   stat: path="/etc/nginx/snippets/{{ php_domain_name }}.ssl.conf"
   register: ssl_config_file
 
+- name: Check if extra config is there
+  stat: path="/etc/nginx/snippets/{{ php_domain_name }}.extra.conf"
+  register: extra_config_file
+
 - name: Check if acme_well_known config is there
   stat: path="/etc/nginx/snippets/acme_well_known.conf"
   register: acme_well_known_config_file
