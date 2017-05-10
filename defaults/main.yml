@@ -107,3 +107,6 @@ php_limitreq_per_second: 15
 
 # extra snippet to add in nginx server configuration
 php_nginx_extra_snippet_path: null
+
+# enable ipv6 ?
+php_enable_ipv6: false
