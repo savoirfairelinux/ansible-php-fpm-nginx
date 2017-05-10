@@ -104,3 +104,6 @@ php_limitreq_enabled: false
 
 # the maximum requests per second per client IP address to throw HTTP error
 php_limitreq_per_second: 15
+
+# extra snippet to add in nginx server configuration
+php_nginx_extra_snippet_path: null
