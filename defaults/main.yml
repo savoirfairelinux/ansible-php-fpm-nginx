@@ -110,3 +110,16 @@ php_nginx_extra_snippet_path: null
 
 # enable ipv6 ?
 php_enable_ipv6: false
+
+# enable gzip compression ?
+php_http_gzip_enabled: false
+
+# mime types that you want to gzip
+php_http_gzip_mimes:
+  - text/css
+  - text/javascript
+  - application/javascript
+  - image/svg+xml
+
+# gzip compression level (from 1 to 9)
+php_http_gzip_compression_level: 5
