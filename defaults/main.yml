@@ -20,6 +20,9 @@ php_url: "http://{{ php_domain_name }}"
 # PHP site root. Where we tell php-fpm to look for its website
 php_site_root: ""
 
+# Key -> value dict to override php.ini values in that specific php-fpm pool
+php_ini: {}
+
 # File we look for when we need this index of the website
 php_index_filename: "index.php"
 
