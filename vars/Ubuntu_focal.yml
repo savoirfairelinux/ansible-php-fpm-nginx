@@ -1,0 +1,21 @@
+common_apt_ubuntu_distro: focal
+
+wordpress_required_system_packages:
+  - php-mysql
+  - php-cli
+  - php-gd
+  # - php-mcrypt
+  - php-xml
+  - exim4
+  - zip
+  - gettext
+  - curl
+  - python3-mysqldb # for ansible to connect to mysql
+  - mariadb-client # for wpcli to connect to the DB
+
+php_required_system_packages:
+  - php-fpm
+
+php_fpm_socket_path: /var/run/php/php7.4-fpm.sock
+
+php_fastcgi_nginx_include: include fastcgi.conf;
