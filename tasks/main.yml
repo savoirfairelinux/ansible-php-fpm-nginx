@@ -1,14 +1,14 @@
 - include_vars: "{{ ansible_distribution }}_{{ ansible_distribution_release }}.yml"
 
-- include: uninstall.yml
+- import_tasks: uninstall.yml
   when: php_uninstall
 
 - block:
-  - include: system.yml
+  - import_tasks: system.yml
 
-  - include: pool.yml
+  - import_tasks: pool.yml
     when: php_create_pool
 
-  - include: nginx.yml
+  - import_tasks: nginx.yml
 
   when: not php_uninstall
