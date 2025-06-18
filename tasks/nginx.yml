@@ -6,18 +6,6 @@
   stat: path="/etc/nginx/snippets/acme_well_known.conf"
   register: acme_well_known_config_file
 
-- name: Copy ssl config to the nginx snippets ssl config file
-  ansible.builtin.copy:
-    content: >
-      ssl on;
-      ssl_certificate {{ ssl_certchain_wildcard_path }};
-      ssl_certificate_key {{ ssl_privkey_wildcard_path }};
-    dest: "{{ item }}"
-    mode: '0644'
-  with_items:
-    - "{{ ssl_snippets_config }}"
-  when: ssl_config_file.stat.exists and acme_well_known_config_file.stat.exists
-
 - name: Ensure htpasswd file present for HTTP basic auth
   htpasswd:
     path: "{{ php_http_basic_auth_htpasswd_path }}"
