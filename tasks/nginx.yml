@@ -18,5 +18,5 @@
   when: php_http_basic_auth_enabled
 
 - name: Create config for site
-  template: "src=nginx.conf dest=/etc/nginx/sites-enabled/{{ php_base_name }}.conf"
+  template: "src=nginx.conf dest=/etc/nginx/sites-enabled/{{ php_domain_name }}.conf"
   notify: nginx restart
