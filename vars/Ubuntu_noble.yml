@@ -1,0 +1,17 @@
+common_apt_ubuntu_distro: noble
+
+php_required_system_packages:
+  - php-fpm
+
+php_fpm_socket_path: /var/run/php/php7.4-fpm.sock
+
+php_fastcgi_nginx_include: include fastcgi.conf;
+
+php_url: "http://{{ php_domain_name }}"
+
+# If set, our nginx config will only answer to HTTPS requests, ignoring requests on port 80.
+php_ssl_only: no
+
+ssl_privkey_wildcard_path: "{{ ssl_privkey_wildcard_savoirfairelinux_com_path }}"
+ssl_certchain_wildcard_path: "{{ ssl_certchain_wildcard_savoirfairelinux_com_path }}"
+ssl_snippets_config: "{{ ssl_snippets_config }}"
