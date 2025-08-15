@@ -10,5 +10,6 @@
     when: php_create_pool
 
   - import_tasks: nginx.yml
+    when: nginx_install
 
   when: not php_uninstall
