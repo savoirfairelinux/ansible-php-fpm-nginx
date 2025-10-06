@@ -1,0 +1,10 @@
+php_required_system_packages:
+  - php-fpm
+
+php_fpm_pool_conf_path: /etc/php/7.0/fpm/pool.d
+
+php_fpm_socket_path: /var/run/php/php7.0-fpm.sock
+
+php_fpm_service_name: php7.0-fpm
+
+php_fastcgi_nginx_include: include fastcgi.conf;
